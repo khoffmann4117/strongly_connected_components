@@ -1,0 +1,14 @@
+[project]
+name = "strongly-connected-components"
+version = "0.1.0"
+description = "Finds the strongly connected components of a directed graph using Tarjan's single-pass algorithm on a plain dict-based adjacency list."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
