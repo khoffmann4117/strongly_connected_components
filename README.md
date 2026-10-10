@@ -34,3 +34,10 @@ Components are yielded bottom-up relative to the condensation DAG: a component's
 ## The awkward edge
 
 A node may appear only as a successor value and never as a key in the dict. This implementation treats every node that appears as a key OR as a successor value as a member of the graph, and yields each such node as part of some component (singleton if it has no path back to itself). If your caller expects every node to be a key, you must normalize the input yourself before calling this function — this library will not silently drop successor-only nodes.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
